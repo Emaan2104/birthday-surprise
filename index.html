@@ -35,7 +35,7 @@
       100% { text-shadow: 0 0 10px #fff; }
     }
 
-    #message {
+    #message, #secondMessage {
       display: none;
       font-size: 2em;
       animation: glow 1s infinite alternate;
@@ -86,6 +86,15 @@
       transform: scale(1.05);
     }
 
+    #secondMessage {
+      animation: fadeIn 2s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
     canvas {
       position: fixed;
       top: 0;
@@ -94,11 +103,15 @@
       pointer-events: none;
     }
 
+    audio {
+      display: none;
+    }
+
     @media (max-width: 600px) {
       h1 {
         font-size: 2em;
       }
-      #message {
+      #message, #secondMessage {
         font-size: 1.8em;
       }
       .btn {
@@ -120,7 +133,14 @@
 
   <button id="heartBtn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
 
+  <div id="secondMessage">
+    <p>You're the reason behind my smile 💖</p>
+    <p>May your day be filled with love, laughter, and all your favorite things.</p>
+  </div>
+
   <canvas id="heartCanvas"></canvas>
+
+  <audio id="bgMusic" src="https://cdn.pixabay.com/audio/2023/03/14/audio_7d99f4bb6a.mp3" loop></audio>
 
   <script>
     function showMessage() {
@@ -128,10 +148,15 @@
       document.querySelector('h1').style.display = 'none';
       document.getElementById('message').style.display = 'block';
       document.getElementById('heartBtn').style.display = 'inline-block';
+
+      // Play music on interaction
+      const music = document.getElementById('bgMusic');
+      music.play();
     }
 
     function startHearts() {
       document.getElementById('heartBtn').style.display = 'none';
+      document.getElementById('secondMessage').style.display = 'block';
 
       const canvas = document.getElementById('heartCanvas');
       const ctx = canvas.getContext('2d');
@@ -183,3 +208,5 @@
   </script>
 </body>
 </html>
+
+
