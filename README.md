@@ -1,1 +1,154 @@
-# birthday-surprise
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Happy Birthday Shanza</title>
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      font-family: 'Quicksand', sans-serif;
+      background: radial-gradient(circle at center, #ffe5ec, #ffccd5, #fca3b7);
+      text-align: center;
+      color: #800040;
+    }
+
+    h1 {
+      margin-top: 100px;
+      font-family: 'Dancing Script', cursive;
+      font-size: 3em;
+      animation: pulseText 2s infinite;
+    }
+
+    @keyframes pulseText {
+      0% { text-shadow: 0 0 10px #fff; }
+      50% { text-shadow: 0 0 30px #ff1493; }
+      100% { text-shadow: 0 0 10px #fff; }
+    }
+
+    #message {
+      display: none;
+      font-size: 2.2em;
+      margin-top: 50px;
+      animation: glow 1s infinite alternate;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #fff; }
+      to { text-shadow: 0 0 25px #ff69b4, 0 0 35px #ff1493; }
+    }
+
+    .btn {
+      margin-top: 40px;
+      padding: 15px 35px;
+      font-size: 1.3em;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      background: #ff69b4;
+      color: white;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      font-family: 'Dancing Script', cursive;
+    }
+
+    .btn:hover {
+      background-color: #ff1493;
+      transform: scale(1.05);
+    }
+
+    #heartBtn {
+      display: none;
+      margin-top: 30px;
+      font-size: 1.1em;
+      background: #ff1493;
+    }
+
+    canvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      z-index: -1;
+      pointer-events: none;
+    }
+  </style>
+</head>
+<body>
+  <h1>Click to Open Your Birthday Surprise!</h1>
+  <button class="btn" onclick="showMessage()">Open Surprise</button>
+
+  <div id="message">
+    <p>Happy Birthday My Love</p>
+    <p>Shanza</p>
+    <p>24th May</p>
+  </div>
+
+  <button id="heartBtn" class="btn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
+
+  <canvas id="heartCanvas"></canvas>
+
+  <script>
+    function showMessage() {
+      document.querySelector('button').style.display = 'none';
+      document.querySelector('h1').style.display = 'none';
+      document.getElementById('message').style.display = 'block';
+      document.getElementById('heartBtn').style.display = 'inline-block';
+    }
+
+    function startHearts() {
+      document.getElementById('heartBtn').style.display = 'none';
+
+      const canvas = document.getElementById('heartCanvas');
+      const ctx = canvas.getContext('2d');
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+
+      let hearts = [];
+
+      function createHeart() {
+        hearts.push({
+          x: Math.random() * canvas.width,
+          y: canvas.height + 20,
+          size: Math.random() * 20 + 10,
+          speed: Math.random() * 2 + 1,
+          opacity: Math.random() * 0.5 + 0.5
+        });
+      }
+
+      function drawHeart(x, y, size, opacity) {
+        ctx.save();
+        ctx.translate(x, y);
+        ctx.scale(size / 50, size / 50);
+        ctx.globalAlpha = opacity;
+        ctx.beginPath();
+        ctx.moveTo(25, 25);
+        ctx.bezierCurveTo(25, 15, 40, 15, 40, 25);
+        ctx.bezierCurveTo(40, 35, 25, 45, 25, 55);
+        ctx.bezierCurveTo(25, 45, 10, 35, 10, 25);
+        ctx.bezierCurveTo(10, 15, 25, 15, 25, 25);
+        ctx.closePath();
+        ctx.fillStyle = "#ff69b4";
+        ctx.fill();
+        ctx.restore();
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        hearts.forEach((h, i) => {
+          h.y -= h.speed;
+          drawHeart(h.x, h.y, h.size, h.opacity);
+          if (h.y < -50) hearts.splice(i, 1);
+        });
+        requestAnimationFrame(animate);
+      }
+
+      setInterval(createHeart, 150);
+      animate();
+    }
+  </script>
+</body>
+</html>
+
