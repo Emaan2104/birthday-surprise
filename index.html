@@ -97,6 +97,7 @@
     }
 
     #clickHint {
+      display: none;
       margin-top: 10px;
       font-size: 1.1em;
       color: #ff69b4;
@@ -104,6 +105,7 @@
     }
 
     #arrow {
+      display: none;
       margin-top: 10px;
       font-size: 2em;
       color: #ff69b4;
@@ -153,7 +155,7 @@
   <div id="message">
     <p>Happy Birthday My Love</p>
     <p>Shanza</p>
-    <p>24th May_ 2025</p>
+    <p>24th May 2025</p>
   </div>
 
   <button id="heartBtn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
@@ -178,6 +180,8 @@
       document.querySelector('h1').style.display = 'none';
       document.getElementById('message').style.display = 'block';
       document.getElementById('heartBtn').style.display = 'inline-block';
+      document.getElementById('clickHint').style.display = 'block';  // Show "Click" hint
+      document.getElementById('arrow').style.display = 'block';     // Show arrow
 
       const music = document.getElementById('bgMusic');
       music.play();
@@ -186,6 +190,8 @@
     function startHearts() {
       document.getElementById('heartBtn').style.display = 'none';
       document.getElementById('secondMessage').style.display = 'block';
+      document.getElementById('clickHint').style.display = 'none'; // Hide "Click" hint
+      document.getElementById('arrow').style.display = 'none';    // Hide arrow
 
       const canvas = document.getElementById('heartCanvas');
       const ctx = canvas.getContext('2d');
@@ -237,4 +243,3 @@
   </script>
 </body>
 </html>
-
