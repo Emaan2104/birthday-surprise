@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>Happy Birthday Shanza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Quicksand:wght@500&family=Vollkorn:wght@500&display=swap" rel="stylesheet">
   <style>
     body {
       margin: 0;
@@ -35,13 +35,23 @@
       100% { text-shadow: 0 0 10px #fff; }
     }
 
-    #message, #secondMessage {
+    #message {
       display: none;
       font-size: 2em;
       animation: glow 1s infinite alternate;
       font-family: 'Dancing Script', cursive;
       line-height: 1.6em;
       padding: 20px;
+    }
+
+    #secondMessage {
+      display: none;
+      font-size: 2em;
+      animation: fadeIn 2s ease-in-out forwards;
+      font-family: 'Vollkorn', serif; /* Tuffy-like font */
+      line-height: 1.6em;
+      padding: 20px;
+      color: #800040;
     }
 
     @keyframes glow {
@@ -84,10 +94,6 @@
       background-color: #800040;
       color: white;
       transform: scale(1.05);
-    }
-
-    #secondMessage {
-      animation: fadeIn 2s ease-in-out forwards;
     }
 
     @keyframes fadeIn {
@@ -149,7 +155,6 @@
       document.getElementById('message').style.display = 'block';
       document.getElementById('heartBtn').style.display = 'inline-block';
 
-      // Play music on interaction
       const music = document.getElementById('bgMusic');
       music.play();
     }
@@ -208,5 +213,3 @@
   </script>
 </body>
 </html>
-
-
