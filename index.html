@@ -96,9 +96,28 @@
       transform: scale(1.05);
     }
 
+    #clickHint {
+      margin-top: 10px;
+      font-size: 1.1em;
+      color: #ff69b4;
+      font-family: 'Quicksand', sans-serif;
+    }
+
+    #arrow {
+      margin-top: 10px;
+      font-size: 2em;
+      color: #ff69b4;
+      animation: bounce 1s infinite;
+    }
+
     @keyframes fadeIn {
       from { opacity: 0; transform: translateY(20px); }
       to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
     }
 
     canvas {
@@ -138,6 +157,11 @@
   </div>
 
   <button id="heartBtn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
+
+  <div id="clickHint">
+    <p>Click the button below to know more!</p>
+    <div id="arrow">↓</div>
+  </div>
 
   <div id="secondMessage">
     <p>You're the reason behind my smile 💖</p>
@@ -213,3 +237,4 @@
   </script>
 </body>
 </html>
+
