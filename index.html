@@ -71,8 +71,19 @@
     #heartBtn {
       display: none;
       margin-top: 20px;
-      font-size: 1.1em;
-      background: #ff1493;
+      font-size: 1.5em;
+      background: transparent;
+      color: #800040;
+      font-family: 'Dancing Script', cursive;
+      border: 2px solid #800040;
+      padding: 12px 30px;
+      transition: all 0.3s ease;
+    }
+
+    #heartBtn:hover {
+      background-color: #800040;
+      color: white;
+      transform: scale(1.05);
     }
 
     canvas {
@@ -107,7 +118,7 @@
     <p>24th May</p>
   </div>
 
-  <button id="heartBtn" class="btn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
+  <button id="heartBtn" onclick="startHearts()">Another Surprise is Waiting for You ❤️</button>
 
   <canvas id="heartCanvas"></canvas>
 
